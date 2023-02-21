@@ -15,7 +15,10 @@ export const AuthContextProvider = (props) => {
 
     const loginHandler = (token) => {
         localStorage.setItem('token', token);
-        setToken(token)
+        setToken(token);
+        setTimeout(() => {
+            localStorage.removeItem('token');
+        }, 300000);  // Token will be deleted from local storage after 5 min
     }
     const logoutHandler = () => {
         localStorage.removeItem('token');
